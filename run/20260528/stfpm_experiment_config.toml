@@ -1,0 +1,97 @@
+# 異常検知実験 設定ファイル
+
+experiment_name = "STFPM"
+
+# 実験結果の出力先ルートディレクトリ
+# 各出力先は experiment_directory / experiment_name / dataset_name / ... に自動的に組み立てられる
+experiment_directory = 'C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance-realdata'
+
+#train_loop = [5, 10, 20, 50, 100, 200]
+train_loop = [50]
+
+
+dataset_type          = "phoenix.pipeline.experiments.anomaly_detection.dataset.ADCocoDataset"
+algorithm_type        = "phoenix.pipeline.experiments.anomaly_detection.STFPM1.algorithm.STPMAlgorithm"
+algorithm_config_type = "phoenix.pipeline.experiments.anomaly_detection.STFPM1.algorithm_config.STPMAlgorithmConfig"
+dataset_config_type   = "phoenix.pipeline.experiments.anomaly_detection.experimental_dataset_config.ADDatasetConfig"
+training_config_type  = "phoenix.pipeline.experiments.anomaly_detection.STFPM1.experimental_training_config.STPMTrainingConfig"
+prediction_config_type = "phoenix.pipeline.experiments.anomaly_detection.STFPM1.experimental_prediction_config.STPMPredictionConfig"
+metric_evaluator_type = "phoenix.pipeline.experiments.anomaly_detection.metric_evaluator.ADMetricEvaluator"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADImageAUROC"
+name = "image_auroc"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADImageAP"
+name = "image_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPixelAUROC"
+# name = "pixel_auroc"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPixelAP"
+# name = "pixel_ap"
+
+#[[metrics]]
+#type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPixelAUPRO"
+#name = "pixel_aupro"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectImageAUROC"
+name = "per_defect_image_auroc"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectImageAP"
+name = "per_defect_image_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectPixelAUROC"
+# name = "per_defect_pixel_auroc"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectPixelAP"
+# name = "per_defect_pixel_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADNormalScoreVariance"
+# name = "normal_score_variance"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADInferenceTime"
+name = "avg_inference_time_seconds"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADMissRate"
+target_missing_rate = 0.01
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADFalsePositiveRate"
+target_missing_rate = 0.01
+
+
+
+
+[algorithm_config]
+backbone_name        = "model1"
+resize_size          = 256
+vision_server_url    = "http://127.0.0.1:8888"
+use_fused            = true
+target_missing_rate  = 0.01
+# gradient_clipping = { norm_type = 2, max_value = 1.0 }
+loss_function        = { name = "stpm_loss" }
+
+# データセット設定・学習設定は experimental_dataset_config.toml で上書き可能
+[training_config]
+n_epochs              = 10
+training_batch_size   = 8
+validation_batch_size = 8
+
+[training_config.optimizer]
+name          = "Adam"
+learning_rate = 0.0001
+
+[prediction_config]
+use_onnx_model = true
+# anomalymap_directory と predict_results_directory は自動組み立て

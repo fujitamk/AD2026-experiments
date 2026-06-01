@@ -1,0 +1,62 @@
+2026-05-29 13:14:11,225 - __main__ - INFO - ログファイル: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\experiment_20260529_131411.log
+2026-05-29 13:14:11,228 - __main__ - INFO - === 複数データセット実験を開始: 4 件 ===
+2026-05-29 13:14:11,228 - __main__ - INFO - [1/4] dataset-config: C:\Users\VRAINSolutionMakoFuj\workspace\ad-test-dataset-2026\datasets\button_battery\experimental_dataset_config.toml
+2026-05-29 13:14:11,228 - __main__ - INFO - TOML設定ファイルから実験を実行: phoenix\pipeline\experiments\anomaly_detection\CPR\experiment_config.toml
+2026-05-29 13:24:45,792 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - [CPR threshold] 閾値を設定しました: threshold=449.9440
+2026-05-29 13:24:45,801 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\button_battery\train100\profile.json (phase=train)
+2026-05-29 13:25:33,025 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - 学習済みモデルを削除しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\button_battery\train100\model-output\train\04000.pth
+2026-05-29 13:25:33,027 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\button_battery\train100\profile.json (phase=predict)
+2026-05-29 13:25:41,273 - __main__ - INFO - === 実験結果 ===
+2026-05-29 13:25:41,273 - __main__ - INFO -   [train100]
+2026-05-29 13:25:41,274 - __main__ - INFO -     image_auroc: 0.7639
+2026-05-29 13:25:41,274 - __main__ - INFO -     image_ap: 0.7686
+2026-05-29 13:25:41,274 - __main__ - INFO -     per_defect_image_auroc: 0.7716
+2026-05-29 13:25:41,274 - __main__ - INFO -     per_defect_image_ap: 0.4586
+2026-05-29 13:25:41,274 - __main__ - INFO -     avg_inference_time_seconds: 0.0067
+2026-05-29 13:25:41,274 - __main__ - INFO -     miss_rate_at_0.01: 0.0101
+2026-05-29 13:25:41,274 - __main__ - INFO -     false_positive_rate_at_0.01: 0.8833
+2026-05-29 13:25:41,275 - __main__ - INFO - [2/4] dataset-config: C:\Users\VRAINSolutionMakoFuj\workspace\ad-test-dataset-2026\datasets\mint\experimental_dataset_config.toml
+2026-05-29 13:25:41,275 - __main__ - INFO - TOML設定ファイルから実験を実行: phoenix\pipeline\experiments\anomaly_detection\CPR\experiment_config.toml
+2026-05-29 13:35:49,837 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - [CPR threshold] 閾値を設定しました: threshold=371.6530
+2026-05-29 13:35:49,840 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\mint\train100\profile.json (phase=train)
+2026-05-29 13:36:31,018 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - 学習済みモデルを削除しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\mint\train100\model-output\train\04000.pth
+2026-05-29 13:36:31,019 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\mint\train100\profile.json (phase=predict)
+2026-05-29 13:36:35,788 - __main__ - INFO - === 実験結果 ===
+2026-05-29 13:36:35,788 - __main__ - INFO -   [train100]
+2026-05-29 13:36:35,788 - __main__ - INFO -     image_auroc: 0.6910
+2026-05-29 13:36:35,788 - __main__ - INFO -     image_ap: 0.4926
+2026-05-29 13:36:35,788 - __main__ - INFO -     per_defect_image_auroc: 0.6910
+2026-05-29 13:36:35,789 - __main__ - INFO -     per_defect_image_ap: 0.3423
+2026-05-29 13:36:35,789 - __main__ - INFO -     avg_inference_time_seconds: 0.0067
+2026-05-29 13:36:35,789 - __main__ - INFO -     miss_rate_at_0.01: 0.0125
+2026-05-29 13:36:35,789 - __main__ - INFO -     false_positive_rate_at_0.01: 0.9567
+2026-05-29 13:36:35,789 - __main__ - INFO - [3/4] dataset-config: C:\Users\VRAINSolutionMakoFuj\workspace\ad-test-dataset-2026\datasets\switch\experimental_dataset_config.toml
+2026-05-29 13:36:35,789 - __main__ - INFO - TOML設定ファイルから実験を実行: phoenix\pipeline\experiments\anomaly_detection\CPR\experiment_config.toml
+2026-05-29 13:46:49,398 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - [CPR threshold] 閾値を設定しました: threshold=305.9560
+2026-05-29 13:46:49,401 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\switch\train100\profile.json (phase=train)
+2026-05-29 13:47:36,320 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - 学習済みモデルを削除しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\switch\train100\model-output\train\04000.pth
+2026-05-29 13:47:36,321 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\switch\train100\profile.json (phase=predict)
+2026-05-29 13:47:44,047 - __main__ - INFO - === 実験結果 ===
+2026-05-29 13:47:44,047 - __main__ - INFO -   [train100]
+2026-05-29 13:47:44,047 - __main__ - INFO -     image_auroc: 0.9561
+2026-05-29 13:47:44,047 - __main__ - INFO -     image_ap: 0.9727
+2026-05-29 13:47:44,047 - __main__ - INFO -     per_defect_image_auroc: 0.9567
+2026-05-29 13:47:44,048 - __main__ - INFO -     per_defect_image_ap: 0.9281
+2026-05-29 13:47:44,048 - __main__ - INFO -     avg_inference_time_seconds: 0.0065
+2026-05-29 13:47:44,048 - __main__ - INFO -     miss_rate_at_0.01: 0.0109
+2026-05-29 13:47:44,048 - __main__ - INFO -     false_positive_rate_at_0.01: 0.6000
+2026-05-29 13:47:44,048 - __main__ - INFO - [4/4] dataset-config: C:\Users\VRAINSolutionMakoFuj\workspace\ad-test-dataset-2026\datasets\audiojack\experimental_dataset_config.toml
+2026-05-29 13:47:44,048 - __main__ - INFO - TOML設定ファイルから実験を実行: phoenix\pipeline\experiments\anomaly_detection\CPR\experiment_config.toml
+2026-05-29 13:57:31,466 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - [CPR threshold] 閾値を設定しました: threshold=322.5970
+2026-05-29 13:57:31,468 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\audiojack\train100\profile.json (phase=train)
+2026-05-29 13:58:00,362 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - 学習済みモデルを削除しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\audiojack\train100\model-output\train\04000.pth
+2026-05-29 13:58:00,363 - phoenix.pipeline.experiments.anomaly_detection.CPR.algorithm - INFO - プロファイル結果を出力しました: C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance\cpr-512-100\audiojack\train100\profile.json (phase=predict)
+2026-05-29 13:58:04,921 - __main__ - INFO - === 実験結果 ===
+2026-05-29 13:58:04,921 - __main__ - INFO -   [train100]
+2026-05-29 13:58:04,921 - __main__ - INFO -     image_auroc: 0.8715
+2026-05-29 13:58:04,921 - __main__ - INFO -     image_ap: 0.8333
+2026-05-29 13:58:04,921 - __main__ - INFO -     per_defect_image_auroc: 0.8612
+2026-05-29 13:58:04,921 - __main__ - INFO -     per_defect_image_ap: 0.5033
+2026-05-29 13:58:04,922 - __main__ - INFO -     avg_inference_time_seconds: 0.0066
+2026-05-29 13:58:04,922 - __main__ - INFO -     miss_rate_at_0.01: 0.0108
+2026-05-29 13:58:04,922 - __main__ - INFO -     false_positive_rate_at_0.01: 0.8400
