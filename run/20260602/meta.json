@@ -1,0 +1,7 @@
+"reproducibility": {
+  "dataset_git_commit_hash": "ceb5e16e159eed128099430b0a4071113a13098c",
+  "dvc_lock_hash": "7658621c25d7ff396b43b20e96255eb9.dir",
+  "git_dirty": false,
+  "pipeline_git_commit_hash": "a40dde75748ec4084e5f49ccf7de3b71f14c4681",
+  "pipeline_git_dirty": True, # STPMの修正がcommitされていないため、dirtyな状態
+}
