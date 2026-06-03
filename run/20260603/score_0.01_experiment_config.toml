@@ -1,0 +1,116 @@
+# 異常検知実験 設定ファイル
+#
+#異常スコアの計算する数を変更した。
+# 使用方法:
+#   uv run python -m phoenix.pipeline.experiments.anomaly_detection.run_experiment \
+#       --config phoenix/pipeline/experiments/anomaly_detection/experiment_config.toml \
+#       --dataset-config phoenix/pipeline/experiments/anomaly_detection/experimental_dataset_config.toml
+
+experiment_name = "score-10"
+
+# 実験結果の出力先ルートディレクトリ
+# 各出力先は experiment_directory / experiment_name / dataset_name / ... に自動的に組み立てられる
+experiment_directory = 'C:\Users\VRAINSolutionMakoFuj\workspace\Experiment\performance'
+
+train_loop = [200]
+# train_loop = [100,200]
+
+dataset_type          = "phoenix.pipeline.experiments.anomaly_detection.dataset.ADCocoDataset"
+algorithm_type        = "phoenix.pipeline.experiments.anomaly_detection.CPR2.algorithm.CPRAlgorithm"
+algorithm_config_type = "phoenix.pipeline.experiments.anomaly_detection.CPR2.config.algorithm_config.CPRAlgorithmConfig"
+dataset_config_type   = "phoenix.pipeline.experiments.anomaly_detection.experimental_dataset_config.ADDatasetConfig"
+training_config_type  = "phoenix.pipeline.experiments.anomaly_detection.CPR2.config.experimental_training_config.CPRTrainingConfig"
+prediction_config_type = "phoenix.pipeline.experiments.anomaly_detection.CPR2.config.experimental_prediction_config.CPRPredictionConfig"
+metric_evaluator_type = "phoenix.pipeline.experiments.anomaly_detection.metric_evaluator.ADMetricEvaluator"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADImageAUROC"
+name = "image_auroc"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADImageAP"
+name = "image_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPixelAUROC"
+# name = "pixel_auroc"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPixelAP"
+# name = "pixel_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPixelAUPRO"
+# name = "pixel_aupro"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectImageAUROC"
+name = "per_defect_image_auroc"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectImageAP"
+name = "per_defect_image_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectPixelAUROC"
+# name = "per_defect_pixel_auroc"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectPixelAP"
+# name = "per_defect_pixel_ap"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADNormalScoreVariance"
+# name = "normal_score_variance"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADInferenceTime"
+name = "avg_inference_time_seconds"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADMissRate"
+target_missing_rate = 0.01
+name = "miss_rate"
+
+[[metrics]]
+type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADFalsePositiveRate"
+target_missing_rate = 0.01
+name = "false_positive_rate"
+
+# [[metrics]]
+# type = "phoenix.pipeline.experiments.anomaly_detection.metric.PipelineADPerDefectMissRate"
+# target_missing_rate = 0.01
+# name = "per_defect_miss_rate"
+
+[algorithm_config]
+backbone_name       = "model1"
+resize_size         = 512
+use_fused           = true
+target_missing_rate = 0.01
+
+#CPRの設定
+pretrained_model     =  "DenseNet" # 事前学習モデルの名前
+layer           = "features.denseblock1" # 特徴抽出に使用する層の名前
+k_nearest = 10
+vis = false
+top_k_for_image_score = 10
+
+# データセット設定・学習設定は experimental_dataset_config.toml で上書き可能
+[training_config]
+n_epochs              = 10
+training_batch_size   = 4
+validation_batch_size = 4
+
+#CPRの設定
+num_synthetic   = 1200
+num_workers     =  2
+steps           = 4000
+cpr_learning_rate = 0.0001
+
+[training_config.optimizer]
+name          = "Adam"
+learning_rate = 0.0001
+
+[prediction_config]
+use_onnx_model = true
+# anomalymap_directory と predict_results_directory は自動組み立て
